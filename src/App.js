@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import MainFooter from './containers/main-footer/main-footer';
+import MainHeader from './containers/main-header/main-header';
+import { Box, Container, CssBaseline } from '@mui/material';
+import { useRoutes } from 'react-router-dom';
+import { appRoute } from './routes';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const routes = useRoutes(appRoute);
+
+  return (<>
+    <CssBaseline />
+    <Box display='flex' minHeight='100vh' flexDirection='column'>
+      <MainHeader />
+      <Box flex={1}>
+        <Container >
+          {routes}
+        </Container>
+      </Box>
+      <MainFooter />
+    </Box>
+  </>);
 }
 
 export default App;
